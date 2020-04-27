@@ -1,5 +1,7 @@
 # Android Jar With Hidden API
 
+NOTE: Tested with API 29 and Android 10.
+
 This repo contains the steps to generate an android.jar with access to AOSP's hidden APIs. You can use the already modified android.jar, use the script to create a custom one or simply do manually the steps.
 
 # Script
