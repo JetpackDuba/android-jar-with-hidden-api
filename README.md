@@ -1,3 +1,11 @@
+# Android Jar With Hidden API
+
+This repo contains the steps to generate an android.jar with access to AOSP's hidden APIs. You can use the already modified android.jar, use the script to create a custom one or simply do manually the steps.
+
+# Script
+
+The script requires unzip to be installed (obviously also java to use jar the tool). You will have to pass the path of the folder where the original android.jar is contained and your AOSP path (previously built to generate all the framework files).
+
 # Custom android.jar
 
 Steps to generate an android.jar with access to AOSP hidden API
