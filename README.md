@@ -14,7 +14,7 @@ Steps to generate an android.jar with access to AOSP hidden API
 
 - Uncompress the original `android.jar` from your SDK directory (/home/user/Android/Sdk/platforms/android-XX/android.jar where XX is your SDK API version) into a new folder, for example a folder called `new_android_jar`.
 
-- Uncompress the content of `classes-header.jar` located in /your_path/aosp/out/target/common/obj/JAVA_LIBRARIES/framework_intermediates into the same folder as `android.jar` (new_android_jar in this case).
+- Uncompress the content of `classes-header.jar` located in `aosp/out/target/common/obj/JAVA_LIBRARIES/framework-minus-apex_intermediates` (it could also be in `framework_intermediates`) into the same folder as `android.jar` (new_android_jar in this case).
 
 - Then generate a new `android.jar` using the following command: `jar cvf android.jar -C new_android_jar/ .`
 
