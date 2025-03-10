@@ -14,7 +14,7 @@ Steps to generate an android.jar with access to AOSP hidden API
 
 - Uncompress the original `android.jar` from your SDK directory (/home/user/Android/Sdk/platforms/android-XX/android.jar where XX is your SDK API version) into a new folder, for example a folder called `new_android_jar`.
 
-- Uncompress the content of every `classes-header.jar` located in every `framework-*` directory in `aosp/out/target/common/obj/JAVA_LIBRARIES/` (in older versions of android there could be a single directory `framework_intermediates`) into the same folder as `android.jar` (new_android_jar in this case).
+- Uncompress the content of every `classes-header.jar` located in `aosp/out/target/common/obj/JAVA_LIBRARIES/framework-*` into the same folder as `android.jar` (new_android_jar in this case). Each `framework-*` directory contains different sets of classes, iinclude whatever APIs you need, but beware that including `framework-appsearch.com.android.appsearch_intermediates`, as it may result in the following error: `Failed to transform file 'android.jar' to match attributes {artifactType=android-mockable-jar, returnDefaultValues=false} using transform MockableJarTransform`. Older versions of android than Android 15 there could be a single directory `framework_intermediates`.
 
 - Then generate a new `android.jar` using the following command: `jar cvf android.jar -C new_android_jar/ .`
 
