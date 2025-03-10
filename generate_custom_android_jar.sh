@@ -14,9 +14,13 @@ echo "Generating new jar..."
 
 unzip -qq $android_jar_path/android.jar -d $tmp_android_jar_dir
 
-for i in $aosp_path/out/target/common/obj/JAVA_LIBRARIES/framework-*; do
-    echo Unzipping content of $i/classes-header.jar to $tmp_android_jar_dir
-    unzip -qq -o  $i/classes-header.jar -d $tmp_android_jar_dir
+for i in /home/abde/Projects/A15.0.0_r17/out/target/common/obj/JAVA_LIBRARIES/framework-*; do
+    # Exclude appsearch to avoid getting this error: Failed to transform file 'android.jar' to match attributes {artifactType=android-mockable-jar, returnDefaultValues=false} using transform MockableJarTransform
+    if [[ $i != *framework-appsearch.com.android.appsearch_intermediates ]] ;
+    then
+      echo "Unzipping $i/classes-header.jar to $tmp_android_jar_dir"
+      unzip -qq -o  $i/classes-header.jar -d $tmp_android_jar_dir
+    fi
 done
 
 
