@@ -13,7 +13,12 @@ read -p "AOSP root path (example /home/user/Projects/AOSP/aosp_10_r30): " aosp_p
 echo "Generating new jar..."
 
 unzip -qq $android_jar_path/android.jar -d $tmp_android_jar_dir
-unzip -qq -o  $aosp_path/out/target/common/obj/JAVA_LIBRARIES/framework_intermediates/classes-header.jar -d $tmp_android_jar_dir
+
+for i in $aosp_path/out/target/common/obj/JAVA_LIBRARIES/framework-*; do
+    echo Unzipping content of $i/classes-header.jar to $tmp_android_jar_dir
+    unzip -qq -o  $i/classes-header.jar -d $tmp_android_jar_dir
+done
+
 
 jar cvf android.jar -C $tmp_android_jar_dir . &> /dev/null
 
